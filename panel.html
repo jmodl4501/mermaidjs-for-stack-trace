@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스택 트레이스 시각화</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <div class="container">
+    <h1>스택 트레이스 시각화</h1>
+    
+    <div class="control-panel">
+      <div class="tabs">
+        <button id="tabManual" class="tab-button active">직접 입력</button>
+        <button id="tabCapture" class="tab-button">XHR 캡처</button>
+      </div>
+
+      <div id="manualInputPanel" class="tab-panel active">
+        <div class="input-section">
+          <textarea id="stackTraceInput" placeholder="Chrome Dev Tools에서 Copy Stack Trace한 내용을 여기에 붙여넣으세요..."></textarea>
+          <button id="convertButton">변환</button>
+        </div>
+      </div>
+
+      <div id="capturePanel" class="tab-panel">
+        <div class="capture-controls">
+          <button id="captureErrorsBtn">XHR 감지 시작</button>
+          <button id="stopCaptureBtn" disabled>감지 중지</button>
+          <button id="clearCapturedBtn">캡처 내역 초기화</button>
+        </div>
+        <div id="capturedErrors" class="captured-errors-list">
+          <p class="empty-message">감지된 XHR 요청이 없습니다. XHR 감지를 시작하고 페이지에서 네트워크 요청을 발생시켜 보세요.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="output-section">
+      <h2>다이어그램</h2>
+      <div id="mermaidOutput" class="mermaid-container"></div>
+      
+      <h2>스택 소스 코드</h2>
+      <div id="sourceCodeContainer" class="source-code-container">
+        <pre id="sourceCodeOutput"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="lib/mermaid.min.js"></script>
+  <script src="panel.js"></script>
+</body>
+</html> 
